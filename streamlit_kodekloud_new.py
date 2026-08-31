@@ -179,7 +179,13 @@ defaults = {
 
     "model":"Claude Sonnet 5",
 
-    "memory":True
+    "memory":True,
+
+    "thinking":False,
+
+    "reasoning_effort":"medium",
+
+    "last_reasoning":""
 
 }
 
@@ -445,6 +451,32 @@ with st.sidebar:
         help="If disabled every request starts fresh."
 
     )
+
+    ############################################################
+    # THINKING / REASONING
+    ############################################################
+
+    st.session_state.thinking = st.toggle(
+
+        "🧠 Extended Thinking",
+
+        value=st.session_state.thinking,
+
+        help="Ask reasoning-capable models to think before answering."
+
+    )
+
+    if st.session_state.thinking:
+
+        st.session_state.reasoning_effort = st.select_slider(
+
+            "Thinking Effort",
+
+            options=["low", "medium", "high"],
+
+            value=st.session_state.reasoning_effort
+
+        )
 
     st.divider()
 
@@ -719,17 +751,33 @@ def call_llm(user_message):
 
     )
 
-    response = client.chat.completions.create(
+    # Build kwargs so we only send the thinking option when it is ON.
+    # (Sending it unconditionally could break models that don't support it.)
+    kwargs = {
+        "model": MODELS[st.session_state.model],
+        "temperature": st.session_state.temperature,
+        "messages": build_messages(user_message),
+    }
 
-        model=MODELS[st.session_state.model],
+    if st.session_state.thinking:
 
-        temperature=st.session_state.temperature,
+        kwargs["reasoning_effort"] = st.session_state.reasoning_effort
 
-        messages=build_messages(user_message)
+    response = client.chat.completions.create(**kwargs)
 
+    msg = response.choices[0].message
+
+    # Some providers return the thinking trace on a separate field.
+    # OpenAI hides it, but Claude / DeepSeek style proxies often expose it.
+    reasoning = (
+        getattr(msg, "reasoning_content", None)
+        or getattr(msg, "reasoning", None)
+        or ""
     )
 
-    return response.choices[0].message.content
+    st.session_state.last_reasoning = reasoning or ""
+
+    return msg.content
 
 
 ##########################################################################
@@ -813,6 +861,12 @@ if submit:
             st.stop()
 
     with st.chat_message("assistant"):
+
+        if st.session_state.thinking and st.session_state.last_reasoning:
+
+            with st.expander("🧠 Thinking"):
+
+                st.markdown(st.session_state.last_reasoning)
 
         try:
 
@@ -1217,12 +1271,18 @@ def stream_llm(user_message):
         base_url=BASE_URL
     )
 
-    stream = client.chat.completions.create(
-        model=MODELS[st.session_state.model],
-        temperature=st.session_state.temperature,
-        messages=build_messages(user_message),
-        stream=True
-    )
+    stream_kwargs = {
+        "model": MODELS[st.session_state.model],
+        "temperature": st.session_state.temperature,
+        "messages": build_messages(user_message),
+        "stream": True,
+    }
+
+    if st.session_state.thinking:
+
+        stream_kwargs["reasoning_effort"] = st.session_state.reasoning_effort
+
+    stream = client.chat.completions.create(**stream_kwargs)
 
     placeholder = st.empty()
 
