@@ -30,38 +30,37 @@ os.makedirs(CHAT_FOLDER, exist_ok=True)
 
 MODELS = {
     "Claude Sonnet 5": "claude-sonnet-5",
+    "Claude Sonnet 5.5" :"claude-sonnet-5-5",
     "Claude Haiku 4.5": "claude-haiku-4-5-20251001",
-    "Claude Opus 4.8": "claude-opus-4-8",
+    "Claude Opus 5.5": "claude-opus-5-5",
     "Claude Opus 5" : "claude-opus-5",
     "Claude Fable 5": "claude-fable-5",
+    "Claude Fable 5.1" : "claude-fable-5-1",
+
+    "GPT 6 ASTRA" : "gpt-6-astra",
+    "GPT 6 LUNA" : "gpt-6-luna",
+    "GPT 6 SOL" :"gpt-6-sol",
+    
 
     "GPT 5.5": "gpt-5.5",
-    "GPT 5.4": "gpt-5.4",
-    "GPT 5.4 Mini": "gpt-5.4-mini",
     "GPT 5.6 Sol": "gpt-5.6-sol",
     "GPT OSS": "gpt-oss-120b",
 
+    "GEMINI 3.1 PRO" : "google/gemini-3.1-pro-preview",
+    "GEMINI 3.8 FLASH" : "google/gemini-3.8-flash",
 
-    "Gemini 3.5 Flash": "google/gemini-3.5-flash",
-    "Gemini 3 Flash Preview": "google/gemini-3-flash-preview",
-    "Gemini 3.1 Flash Lite": "google/gemini-3.1-flash-lite",
-    "Gemini 3.1 Pro Preview": "google/gemini-3.1-pro-preview",
 
     "DeepSeek V4 Flash": "deepseek/deepseek-v4-flash",
     "DeepSeek V4 Pro": "deepseek/deepseek-v4-pro",
     "DeepSeek V3.2": "deepseek/deepseek-V3.2",
 
-    "MiniMax M3": "minimax/minimax-m3",
-    "MiniMax M2.5": "minimax/MiniMax-M2.5",
-
-    "MiMo V2.5": "xiaomi/MiMo-V2.5",
-    "MiMo V2.5 Pro": "xiaomi/MiMo-V2.5-Pro",
-
     "Moonshot Kimi K2.5": "moonshot/kimi-k2.5",
     "Moonshot Kimi K3": "moonshot/kimi-k3",
 
     "GLM 5.1": "zai/glm-5.1",
-    "Grok 4.3": "xai/grok-4.3"
+    "GLM 5.3 Flash": "zai/glm-5.3-flash",
+    "Grok 4.3": "xai/grok-4.3",
+    "Grok 4.7" : "xai/grok-4.7"
 }
 
 ##########################################################################
