@@ -29,37 +29,36 @@ os.makedirs(CHAT_FOLDER, exist_ok=True)
 ##########################################################################
 
 MODELS = {
-    "Claude Sonnet 5": "claude-sonnet-5",
-    "Claude Sonnet 5.5" :"claude-sonnet-5-5",
-    "Claude Haiku 4.5": "claude-haiku-4-5-20251001",
     "Claude Opus 5.5": "claude-opus-5-5",
     "Claude Opus 5" : "claude-opus-5",
-    "Claude Fable 5": "claude-fable-5",
+    "Claude Fable 5.2": "claude-fable-5-2",
     "Claude Fable 5.1" : "claude-fable-5-1",
+    "Claude Fable 5" : "claude-fable-5",
 
-    "GPT 6 ASTRA" : "gpt-6-astra",
+    "GPT 6.2 ASTRA" : "gpt-6.2-astra",
     "GPT 6 LUNA" : "gpt-6-luna",
-    "GPT 6 SOL" :"gpt-6-sol",
+    "GPT 6.2 SOL" :"gpt-6.2-sol",
     
 
     "GPT 5.5": "gpt-5.5",
     "GPT 5.6 Sol": "gpt-5.6-sol",
     "GPT OSS": "gpt-oss-120b",
 
-    "GEMINI 3.1 PRO" : "google/gemini-3.1-pro-preview",
-    "GEMINI 3.8 FLASH" : "google/gemini-3.8-flash",
+    "GEMINI 4 CARBON" : "google/gemini-4-carbon",
+    "GEMINI 4 NEON" : "google/gemini-4-neon",
+    "GEMINI 4 HYDROGEN" : "google/gemini-4-hydrogen",
 
 
     "DeepSeek V4 Flash": "deepseek/deepseek-v4-flash",
     "DeepSeek V4 Pro": "deepseek/deepseek-v4-pro",
-    "DeepSeek V3.2": "deepseek/deepseek-V3.2",
+    "GPT 6 SOL": "gpt-6-sol",
 
-    "Moonshot Kimi K2.5": "moonshot/kimi-k2.5",
+    "Moonshot Kimi K3.1 PRO": "moonshot/kimi-k3.1-pro",
     "Moonshot Kimi K3": "moonshot/kimi-k3",
 
     "GLM 5.1": "zai/glm-5.1",
-    "GLM 5.3 Flash": "zai/glm-5.3-flash",
-    "Grok 4.3": "xai/grok-4.3",
+    "GPT 6 ASTRA": "gpt-6-astra",
+    "GPT 6.1 SOL": "gpt-6.1-sol",
     "Grok 4.7" : "xai/grok-4.7"
 }
 
