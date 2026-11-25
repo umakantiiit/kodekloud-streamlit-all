@@ -12,7 +12,7 @@ from openai import OpenAI
 ##########################################################################
 
 st.set_page_config(
-    page_title="KodeKloud LLM Playground",
+    page_title="LLM Playground",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -350,7 +350,7 @@ if st.session_state.current_chat is None:
 
 with st.sidebar:
 
-    st.title("🤖 KodeKloud")
+    st.title("🤖")
 
     st.caption("LLM Playground")
 
@@ -532,7 +532,7 @@ with st.sidebar:
 # MAIN HEADER
 ##########################################################################
 
-st.title("🤖 KodeKloud LLM Playground")
+st.title("🤖 LLM Playground")
 
 st.caption(
     "OpenAI Compatible Interface | ChatGPT Style"
@@ -1355,5 +1355,5 @@ if len(st.session_state.messages):
 st.divider()
 
 st.caption(
-    "Built with Streamlit + OpenAI SDK + KodeKloud OpenAI Compatible API"
+    "Built with Streamlit + OpenAI SDK + OpenAI Compatible API"
 )
